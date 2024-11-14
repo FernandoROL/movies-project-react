@@ -10,7 +10,7 @@ Movie index with save feature
     npm install
     cp .env.example .env 
     ```
-2. Go into the `.env` file and follow the instruction inside the file and change the value of `REACT_APP_API_KEY`
+2. Go into the `.env` file, follow the instruction inside the file and change the value of `REACT_APP_MOVIE_API`
 
 3. Start the app:
 

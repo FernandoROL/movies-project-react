@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './style.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 function MyList(){
 
@@ -20,6 +21,7 @@ function MyList(){
         const removeLocal = () => {
             setMovies(moviefilter);
             localStorage.setItem("@fernandoflix", JSON.stringify(moviefilter));
+            toast.success("Movie removed from list");
         }
         window.confirm("Do you really want to delete this movie from your list?", )? 
         removeLocal()
@@ -34,7 +36,7 @@ function MyList(){
             </h1>
 
             {
-                movies.length == 0 ? <span>List empty...</span> : void(0)
+                movies.length === 0 ? <span>Your list is empty...</span> : void(0)
             }
             
             <ul>

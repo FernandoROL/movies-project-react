@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { api, api_key } from "../../services/api";
 import './style.css';
+import { toast } from "react-toastify";
 
 function Movies(){
 
@@ -25,7 +26,7 @@ function Movies(){
                 setMovie(response.data);
             })
             .catch(()=>{
-                console.log('Movie not found!');
+                toast.error("Movie not found!")
                 navigate("/", {replace: true});
                 return;
             });        
@@ -47,13 +48,13 @@ function Movies(){
         const hasMovie = savedMovies.some( (saved) => saved.id === movie.id);
 
         if(hasMovie){
-            alert("Movie is already on your list.");
+            toast.warn("Movie is already on your list.")
             return;
         }
 
         savedMovies.push(movie);
         localStorage.setItem("@fernandoflix" , JSON.stringify(savedMovies));
-        alert('Saved to movie list');
+        toast.success('Saved to movie list');
 
     }
 

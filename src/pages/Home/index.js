@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api";
+import { api, api_key } from "../../services/api";
+import { Link } from "react-router-dom";
+import './home.css';
 
 function Home(){
     const [movies, setMovie] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // Parameters for the movies api
-    const api_key = process.env.REACT_APP_MOVIE_API;
-    const lang = 'en-US';
+    const lang = 'en';
 
     useEffect(()=>{
 
@@ -19,7 +21,9 @@ function Home(){
                 }
             });
             
-            console.log(response.data.results);
+            // console.log(response.data.results.slice(0,10));
+            setMovie(response.data.results.slice(0,10));
+            setLoading(false);
 
         }
 
@@ -27,9 +31,29 @@ function Home(){
 
     }, []);
 
+    if(loading) {
+        return(
+            <div className="loading">
+                <h2>Loading movies...</h2>
+            </div>
+        );
+    }
+
     return(
-        <div>
-            <h1>Welcome to the home page</h1>
+        <div className="container">
+            <div className="movies-list">
+                {
+                    movies.map((movie)=>{
+                        return(
+                            <article key={movie.id}>
+                                <strong>{movie.title}</strong>
+                                <img src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}></img>
+                                <Link to={`/movies/${movie.id}`}>Access</Link>
+                            </article>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

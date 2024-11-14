@@ -4,7 +4,7 @@ header {
     justify-content: space-around;
     width: 100%;
     height: 60px;
-    background-color: rgb(100, 148, 100);
+    background-color: rgb(100, 150, 100);
 }
 
 .logo {
@@ -13,6 +13,16 @@ header {
     cursor: pointer;
     color: white;
     font-weight: bold;
+    background-color: black;
+    background-image: url(https://i1.sndcdn.com/artworks-bIQHFduN5IM9tz2B-sfAUCw-t500x500.jpg);
+    background-size: 100% 100%;
+    background-clip: text;
+    transition: .2s;
+}
+
+.logo:hover {
+    color: transparent;
+    text-shadow:  0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .favorites {
@@ -22,4 +32,11 @@ header {
     color: black;
     border-radius: 4px;
     padding: 5px 14px;
-}   
+    transition: 0.2s;
+}
+
+.favorites:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.5);
+}

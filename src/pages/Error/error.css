@@ -1,0 +1,27 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.error h1 {
+    font-size: 100px;
+}
+
+.error a{
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 20px;
+    border: outset #AAA;
+    transition: .3s;
+}
+
+.error a:hover {
+    border: inset #AAA;
+    background-color: #DDD;
+}
